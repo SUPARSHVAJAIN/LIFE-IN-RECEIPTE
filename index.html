@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Your Life, In Receipts — An interactive digital scrapbook that turns music history and everyday transactions into a meaningful personal story." />
+  <meta name="theme-color" content="#0f0e0c" />
+  <meta name="color-scheme" content="dark" />
+  <title>Your Life, In Receipts — Echoes</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="hero" role="banner">
+    <p class="hero-badge">A Digital Scrapbook of One Life</p>
+    <h1>Your Life,<br />In Receipts</h1>
+    <p class="hero-lead">
+      Hundreds of tiny moments — songs at 2 AM, half-litre milk, train tickets,
+      quiet investments — woven into one continuous story.
+    </p>
+    <div class="hero-meta" aria-label="Project period and sources">
+      <span>2013 – 2024</span>
+      <span aria-hidden="true">•</span>
+      <span>Music + Spending + Everyday Rituals</span>
+    </div>
+    <div class="hero-actions">
+      <a href="#chapters" class="btn">Explore the Chapters</a>
+      <a href="#explore" class="btn btn-ghost">Browse All Receipts</a>
+    </div>
+    <p class="scroll-hint" aria-hidden="true">SCROLL TO BEGIN</p>
+  </header>
+
+  <nav class="site-nav" aria-label="Primary">
+    <ul class="nav-list" role="list">
+      <li><button type="button" data-section="chapters" aria-current="true">Chapters</button></li>
+      <li><button type="button" data-section="music">Soundtrack</button></li>
+      <li><button type="button" data-section="explore">Explore</button></li>
+      <li><button type="button" data-section="patterns">Patterns</button></li>
+      <li><button type="button" data-section="story">Story Mode</button></li>
+    </ul>
+  </nav>
+
+  <main id="main-content" class="container">
+
+    <div class="stats-row" role="region" aria-label="Key statistics">
+      <div class="stat-card">
+        <div class="stat-value" id="stat-receipts">—</div>
+        <div class="stat-label">Life Receipts</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">12</div>
+        <div class="stat-label">Years of Music</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">9</div>
+        <div class="stat-label">Story Chapters</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="stat-artists">—</div>
+        <div class="stat-label">Artists</div>
+      </div>
+    </div>
+
+    <section id="chapters" aria-labelledby="chapters-heading">
+      <h2 id="chapters-heading" class="section-title">The Chapters</h2>
+      <p class="section-sub">
+        These are not months. They are the shapes a life takes when you look at the receipts together.
+      </p>
+      <div class="chapters-grid" id="chapters-grid" role="list"></div>
+      <div class="story-panel" id="chapter-detail" role="region" aria-live="polite" hidden></div>
+    </section>
+
+    <section id="music" aria-labelledby="music-heading">
+      <h2 id="music-heading" class="section-title">The Soundtrack</h2>
+      <p class="section-sub">
+        Over a decade of listening. The same artists return like old friends.
+        Late nights belong to certain songs.
+      </p>
+
+      <aside class="connection-note" role="note">
+        <strong>Connection discovered:</strong>
+        John Mayer appears in both the earliest listens (2013) and the most recent (2024).
+        Some companions stay for the whole journey.
+      </aside>
+
+      <h3 class="section-title" style="font-size:1.35rem; margin:1.75rem 0 0.9rem;">
+        All-time companions
+      </h3>
+      <div class="artists-list" id="top-artists" role="list"></div>
+
+      <h3 class="section-title" style="font-size:1.35rem; margin:2.25rem 0 0.9rem;">
+        Notable listens
+      </h3>
+      <div class="receipt-grid" id="music-listens" role="list"></div>
+    </section>
+
+    <section id="explore" aria-labelledby="explore-heading">
+      <h2 id="explore-heading" class="section-title">Explore the Receipts</h2>
+      <p class="section-sub">
+        Filter, search, and discover. Every card is a real moment from the data.
+      </p>
+
+      <div class="controls" role="search">
+        <label for="search" class="visually-hidden">Search receipts</label>
+        <input
+          type="search"
+          id="search"
+          class="search-box"
+          placeholder="Search notes, tracks, artists, categories…"
+          autocomplete="off"
+          aria-controls="all-receipts"
+        />
+        <button type="button" class="filter-chip" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" class="filter-chip" data-filter="music" aria-pressed="false">Music</button>
+        <button type="button" class="filter-chip" data-filter="purchase" aria-pressed="false">Purchases</button>
+        <button type="button" class="filter-chip" data-filter="income" aria-pressed="false">Income</button>
+        <button type="button" class="filter-chip" data-filter="Food" aria-pressed="false">Food</button>
+        <button type="button" class="filter-chip" data-filter="Health" aria-pressed="false">Health</button>
+        <button type="button" class="filter-chip" data-filter="Transportation" aria-pressed="false">Travel</button>
+      </div>
+
+      <div class="receipt-grid" id="all-receipts" role="list"></div>
+      <p id="results-count" class="section-sub" style="margin-top:1rem; margin-bottom:0;" aria-live="polite"></p>
+    </section>
+
+    <section id="patterns" aria-labelledby="patterns-heading">
+      <h2 id="patterns-heading" class="section-title">Hidden Patterns</h2>
+      <p class="section-sub">When you put the receipts side by side, larger shapes appear.</p>
+
+      <div class="chapters-grid">
+        <article class="chapter-card" style="cursor:default" tabindex="0">
+          <div class="chapter-period">Daily</div>
+          <h3>The Ritual of Milk</h3>
+          <p>
+            Half-litre milk appears again and again across years. It is one of the most
+            consistent receipts in the entire collection — a quiet marker of home.
+          </p>
+        </article>
+        <article class="chapter-card" style="cursor:default" tabindex="0">
+          <div class="chapter-period">Health + Music</div>
+          <h3>Care in Parallel</h3>
+          <p>
+            Around the same period as cataract medicines and dentist visits, the listening
+            history continues without interruption. Life’s difficulties and its soundtrack
+            run side by side.
+          </p>
+        </article>
+        <article class="chapter-card" style="cursor:default" tabindex="0">
+          <div class="chapter-period">Future Self</div>
+          <h3>Investing While Living</h3>
+          <p>
+            While money went to chai, laundry, and train tickets, another stream steadily
+            moved into PPF and mutual funds. Two selves at once: the present and the one
+            being prepared for.
+          </p>
+        </article>
+        <article class="chapter-card" style="cursor:default" tabindex="0">
+          <div class="chapter-period">Night</div>
+          <h3>2 AM Companions</h3>
+          <p>
+            The Beatles, The Killers, John Mayer, Bob Dylan — the artists that kept company
+            in the hours when almost no one else was awake.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="story" aria-labelledby="story-heading">
+      <h2 id="story-heading" class="section-title">Story Mode</h2>
+      <p class="section-sub">
+        A guided walk through the emerging narrative. Use the buttons to move through the chapters.
+      </p>
+
+      <div class="story-controls">
+        <button type="button" class="btn" id="story-prev" aria-label="Previous chapter">
+          ← Previous
+        </button>
+        <button type="button" class="btn" id="story-next" aria-label="Next chapter">
+          Next Chapter →
+        </button>
+      </div>
+
+      <div class="story-panel is-visible" id="story-content" role="region" aria-live="polite">
+        <p class="period" id="story-period">Chapter 1 of 9</p>
+        <h2 id="story-title">Loading…</h2>
+        <p class="desc" id="story-desc"></p>
+        <div class="receipt-grid" id="story-receipts" role="list"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <p>
+      Built for the “Your Life, In Receipts” challenge · Frontend only ·
+      Data: household transactions + Spotify history
+    </p>
+    <p style="margin-top:0.4rem;">
+      The story is real. The connections were waiting to be noticed.
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
